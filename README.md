@@ -126,3 +126,8 @@ Use your favourite HTTP query engine:
 
 ## Current Limitations
 - Note functionality not yet implemented
+
+## TODO
+- #1
+- #2
+- #3
