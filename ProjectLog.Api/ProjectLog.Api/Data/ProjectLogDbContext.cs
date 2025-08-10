@@ -7,6 +7,7 @@ public class ProjectLogDbContext(DbContextOptions<ProjectLogDbContext> options) 
 {
     public DbSet<Project> Projects => Set<Project>();
 
+#if false // TODO: Add flag to toggle NoSQL support (Cosmos)
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultContainer("Projects");
@@ -15,4 +16,5 @@ public class ProjectLogDbContext(DbContextOptions<ProjectLogDbContext> options) 
             .HasNoDiscriminator()
             .ToContainer("Projects");
     }
+#endif
 }

@@ -1,0 +1,35 @@
+@ProjectLog.Api_HostAddress = https://localhost:8081
+
+GET {{ProjectLog.Api_HostAddress}}/api/Projects
+Accept: application/json
+
+###
+
+GET {{ProjectLog.Api_HostAddress}}/api/Projects/1
+Accept: application/json
+
+###
+
+POST {{ProjectLog.Api_HostAddress}}/api/Projects
+Content-Type: application/json
+{
+  "name": "Project 2",
+  "description": "Description for Project 2"
+}
+
+###
+
+PUT {{ProjectLog.Api_HostAddress}}/api/Projects/2
+Content-Type: application/json
+{
+  "id": 2,
+  "name": "Project 3",
+  "description": "Description for Project 2",
+  "createdAt": "2014-09-15T23:14:25.7251173"
+}
+
+###
+
+DELETE {{ProjectLog.Api_HostAddress}}/api/Projects/2
+
+###

@@ -1,0 +1,11 @@
+services:
+  projectlog.api:
+    image: ${DOCKER_REGISTRY-}projectlogapi
+    build:
+      context: .
+      dockerfile: ProjectLog.Api/Dockerfile
+    container_name: ProjectLog.Api
+    env_file: ProjectLog.Api.env
+    ports:
+      - "8080:8080"
+      - "8081:8081"

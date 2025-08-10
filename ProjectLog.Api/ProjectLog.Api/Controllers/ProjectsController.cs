@@ -31,9 +31,15 @@ public class ProjectsController(ProjectLogDbContext db) : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(string id, Project updated)
     {
-        if (id != updated.Id) return BadRequest();
+#if NoSQL
+        var parsedId = id;
+#else
+        if (!int.TryParse(id, out var parsedId)) return BadRequest();
+#endif
 
-        var exists = await db.Projects.CountAsync(p => p.Id == id) > 0;
+        if (parsedId != updated.Id) return BadRequest();
+
+        var exists = await db.Projects.CountAsync(p => p.Id == parsedId) > 0;
         if (!exists) return NotFound();
 
         db.Entry(updated).State = EntityState.Modified;
@@ -44,7 +50,13 @@ public class ProjectsController(ProjectLogDbContext db) : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var project = await db.Projects.FindAsync(id);
+#if NoSQL
+        var parsedId = id;
+#else
+        if (!int.TryParse(id, out var parsedId)) return BadRequest();
+#endif
+
+        var project = await db.Projects.FindAsync(parsedId);
         if (project is null) return NotFound();
 
         db.Projects.Remove(project);
