@@ -44,4 +44,3 @@ jobs:
           environmentVariables:
             ASPNETCORE_ENVIRONMENT=Development
             DISABLE_HTTPS_REDIRECTION=true
-            ConnectionStrings__DefaultSQLConnection=secretref:sql-connection-string-a7f74
