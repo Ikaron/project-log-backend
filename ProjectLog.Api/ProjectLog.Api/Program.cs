@@ -41,7 +41,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
+var disableHttps = Environment.GetEnvironmentVariable("DISABLE_HTTPS_REDIRECTION");
+if (string.IsNullOrEmpty(disableHttps) || !bool.TryParse(disableHttps, out var disableHttpsRedirection) || !disableHttpsRedirection)
+    app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
