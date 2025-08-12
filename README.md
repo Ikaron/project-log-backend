@@ -41,13 +41,13 @@ ProjectLog allows users to track past projects and add notes to them.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo/project-log-backend.git
+git clone https://github.com/Ikaron/project-log-backend.git
 cd project-log-backend/ProjectLog.Api
 ```
 
 ### 2. Create Environment Variable Files
 
-These must be created in `project-log-backend/ProjectLog.Api/`
+These must be created in `ProjectLog.Api/`
 
 .env
 > ```env
@@ -69,14 +69,14 @@ ProjectLog.Api.env
 > ```
 
 ### 3. Other Settings
-Ports can be changed in `project-log-backend/ProjectLog.Api/docker-compose.override.yml`
+Ports can be changed in `ProjectLog.Api/docker-compose.override.yml`
 
 ---
 
 ## Usage
 
 ### Visual Studio
-Open the solution file `(project-log-backend/ProjectLog.Api/ProjectLog.Api.sln)` in Visual Studio, select Docker Compose as the run target, and start debugging.
+Open the solution file `(ProjectLog.Api/ProjectLog.Api.sln)` in Visual Studio, select Docker Compose as the run target, and start debugging.
 
 ### Command Line
 Build and start services:
@@ -110,7 +110,7 @@ Use your favourite HTTP query engine:
 
 > **Visual Studio**
 >
-> In the Solution Explorer, find and open `project-log-backend/ProjectLog.Api/ProjectLog.Api/ProjectLog.Api.http`
+> In the Solution Explorer, find and open `ProjectLog.Api/ProjectLog.Api/ProjectLog.Api.http`
 >
 > This file contains a few example queries that can be run directly in the editor.
 
@@ -126,8 +126,3 @@ Use your favourite HTTP query engine:
 
 ## Current Limitations
 - Note functionality not yet implemented
-
-## TODO
-- #1
-- #2
-- #3
