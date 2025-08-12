@@ -41,7 +41,7 @@ jobs:
           acrPassword: ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
           containerAppName: projectlog-api
           resourceGroup: projectlog-resourcegroup
-          environmentVariables: |
+          environmentVariables:
             ASPNETCORE_ENVIRONMENT=Development
             ASPNETCORE_HTTP_PORTS=80
             ASPNETCORE_HTTPS_PORTS=443
