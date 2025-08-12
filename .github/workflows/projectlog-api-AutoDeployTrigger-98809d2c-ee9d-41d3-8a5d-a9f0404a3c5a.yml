@@ -40,7 +40,6 @@ jobs:
           acrName: projectlog
           containerAppName: projectlog-api
           resourceGroup: projectlog-resourcegroup
-          imageToBuild: default/[parameters('containerAppName')]:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
 
