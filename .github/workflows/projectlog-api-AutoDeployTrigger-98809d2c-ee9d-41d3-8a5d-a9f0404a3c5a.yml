@@ -37,6 +37,8 @@ jobs:
           appSourcePath: ${{ github.workspace }}/ProjectLog.Api
           dockerfilePath: ProjectLog.Api/Dockerfile
           acrName: projectlog
+          acrUsername: ${{ secrets.AZURE_CONTAINER_REGISTRY_USER }}
+          acrPassword: ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
           containerAppName: projectlog-api
           resourceGroup: projectlog-resourcegroup
           _buildArgumentsKey_: |
