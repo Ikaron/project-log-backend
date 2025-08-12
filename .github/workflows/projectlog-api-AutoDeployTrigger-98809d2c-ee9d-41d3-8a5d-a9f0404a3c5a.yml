@@ -36,7 +36,6 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }}/ProjectLog.Api
           dockerfilePath: ProjectLog.Api/Dockerfile
-          targetLabel: ${{ github.sha }}
           acrName: projectlog
           containerAppName: projectlog-api
           resourceGroup: projectlog-resourcegroup
