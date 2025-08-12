@@ -37,12 +37,21 @@ public class ProjectsController(ProjectLogDbContext db) : ControllerBase
         if (!int.TryParse(id, out var parsedId)) return BadRequest();
 #endif
 
-        if (parsedId != updated.Id) return BadRequest();
+        var existing = await db.Projects.FindAsync(parsedId);
+        if (existing == null) return NotFound();
 
-        var exists = await db.Projects.CountAsync(p => p.Id == parsedId) > 0;
-        if (!exists) return NotFound();
+        if (!string.IsNullOrEmpty(updated.Name))
+        {
+            existing.Name = updated.Name;
+            db.Entry(existing).Property(p => p.Name).IsModified = true;
+        }
 
-        db.Entry(updated).State = EntityState.Modified;
+        if (!string.IsNullOrEmpty(updated.Description))
+        {
+            existing.Description = updated.Description;
+            db.Entry(existing).Property(p => p.Description).IsModified = true;
+        }
+
         await db.SaveChangesAsync();
         return NoContent();
     }
