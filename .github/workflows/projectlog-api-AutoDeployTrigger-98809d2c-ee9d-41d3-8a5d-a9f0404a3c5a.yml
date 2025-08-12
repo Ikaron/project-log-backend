@@ -43,7 +43,6 @@ jobs:
           resourceGroup: projectlog-resourcegroup
           environmentVariables:
             ASPNETCORE_ENVIRONMENT=Development
-            ASPNETCORE_HTTP_PORTS=80
-            ASPNETCORE_HTTPS_PORTS=443
-            "ConnectionStrings__DefaultSqlConnection=${{ secrets.SQL_CONNECTION_STRING }}"
+            ASPNETCORE_HTTP_PORTS=8080
+            ASPNETCORE_HTTPS_PORTS=8081
 
