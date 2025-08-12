@@ -35,7 +35,7 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}/ProjectLog.Api/ProjectLog.Api
-          dockerfilePath_: ${{ github.workspace }}/ProjectLog.Api/ProjectLog.Api/Dockerfile
+          dockerfilePath: ${{ github.workspace }}/ProjectLog.Api/ProjectLog.Api/Dockerfile
           targetLabel: ${{ github.sha }}
           acrName: projectlog
           containerAppName: projectlog-api
