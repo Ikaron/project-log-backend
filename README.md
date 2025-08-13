@@ -1,5 +1,10 @@
 # ProjectLog Backend
 
+**Demo Link Frontend**: [https://red-pebble-0a7c38403.2.azurestaticapps.net/](https://red-pebble-0a7c38403.2.azurestaticapps.net/)
+**Demo Link Backend**: [https://projectlog-api.thankfulsky-655b2f40.westeurope.azurecontainerapps.io/swagger/index.html](https://projectlog-api.thankfulsky-655b2f40.westeurope.azurecontainerapps.io/swagger/index.html)
+
+***Note: any changes made on this website are publicly visible.***
+
 ## Overview
 
 **ProjectLog Backend** is a scalable, dynamic, and cloud-ready REST API designed as the backend service for the ProjectLog full-stack sample application. This project demonstrates modern cloud-native development practices with multi-environment support, including local development and cloud deployments.
