@@ -1,8 +1,16 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using ProjectLog.Api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownProxies.Clear();
+    options.KnownNetworks.Clear();
+});
 
 var cosmosEnabledStr = Environment.GetEnvironmentVariable("COSMOS__ENABLED");
 
@@ -32,20 +40,14 @@ builder.Services.AddDbContext<ProjectLogDbContext>(buildOptions);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-if (disableHttps) // This fixes Azure incorrectly linking to HTTP instead of HTTPS as it is behind a proxy
-{
-    builder.Services.AddOpenApi(options => options.AddDocumentTransformer((doc, ctx, cancellationToken) =>
-    {
-        foreach (var server in doc.Servers)
-            server.Url = server.Url.Replace("http://", "https://");
-
-        return Task.CompletedTask;
-    }));
-}
-else
-    builder.Services.AddOpenApi();
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+app.UseForwardedHeaders();
+if (disableHttps)
+    app.UseHttpsRedirection();
+app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
@@ -57,8 +59,5 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-if (disableHttps)
-    app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 app.Run();
