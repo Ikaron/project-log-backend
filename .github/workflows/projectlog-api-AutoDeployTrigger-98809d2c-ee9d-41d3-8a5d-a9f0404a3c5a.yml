@@ -41,7 +41,3 @@ jobs:
           acrPassword: ${{ secrets.AZURE_CONTAINER_REGISTRY_PASSWORD }}
           containerAppName: projectlog-api
           resourceGroup: projectlog-resourcegroup
-          environmentVariables:
-            ASPNETCORE_ENVIRONMENT=Development
-            DISABLE_HTTPS_REDIRECTION=true
-            ConnectionStrings__DefaultSqlConnection=
